@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $projetos = \App\Models\Projects::orderBy('name','ASC')->get()->toArray();
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware('auth');
+    }
 
-        foreach($projetos as $index=>$value){
-            $description = json_decode($value['description'],true);
-            $personal_projects[$index]['description']['tecnologies'] = sort($description['tecnologies']);
-            $value['description']=json_decode($value['description'],true);
-            if($value['type'] == 'personal'){
-                $projetos["pessoal"][$index] = $value;
-                unset($projetos[$index]);
-            }else{
-                $projetos["empresa"][$index] = $value;
-                unset($projetos[$index]);
-            }
-        }
-
-
-        return view('index')->with("projetos",$projetos);
+    /**
+     * Show the application dashboard.
+     */
+    public function index(): RedirectResponse
+    {
+        return redirect()->route('dash');
     }
 }

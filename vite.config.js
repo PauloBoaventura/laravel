@@ -3,15 +3,20 @@ import laravel from 'laravel-vite-plugin';
 
 
 export default defineConfig({
-    plugins: [
+    build: {
+        chunkSizeWarningLimit: 1000, // Set limit globally
+      },
+    
+      plugins: [
         laravel({
-            input: [
+          input: [
             'resources/css/app.css',
             'resources/scss/style.scss',
             'resources/js/app.js',
-        ],refresh: true
-        })
-    ],
+          ],
+          refresh: true,
+        }),
+      ],
 
     // css: {
     //     postcss: null,
@@ -31,7 +36,7 @@ export default defineConfig({
         }
     },
     server: {
-        https: false, // Use HTTPS apenas em produção
+        https: true, // Use HTTPS apenas em produção
         host: true, // Use diferentes hosts para dev e prod
         strictPort: true,
         port: 3009, // Use diferentes portas para dev e prod

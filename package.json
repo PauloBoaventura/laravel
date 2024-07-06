@@ -1,20 +1,60 @@
 {
     "private": true,
-    "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "lint": "eslint 'resources/assets/js/*'"
     },
     "devDependencies": {
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.8.0",
-        "less": "^4.2.0",
-        "sass": "^1.68.0",
-        "stylus": "^0.60.0",
-        "vite": "^4.0.0",
-        "vite-plugin-style-import": "^2.0.0"
+        "@eslint/compat": "^1.1.0",
+        "@eslint/js": "^9.6.0",
+        "bootstrap-sass": "^3.4.3",
+        "eslint": "9.x",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-prettier": "^5.1.3",
+        "eslint-plugin-react": "^7.34.3",
+        "globals": "^15.8.0",
+        "jquery": "^3.7.1",
+        "laravel-mix": "^6.0.49",
+        "prettier": "^3.3.2",
+        "sass": "^1.77.6",
+        "sass-loader": "14.*"
     },
     "dependencies": {
-        "bootstrap": "^5.3.2"
+        "configstore": "^6.0.0",
+        "deep-extend": "^0.6.0",
+        "dot-prop": "^9.0.0",
+        "got": "^14.4.1",
+        "hosted-git-info": "^7.0.2",
+        "ini": "^4.1.3",
+        "mem": "^9.0.2",
+        "minimist": "^1.2.8",
+        "npx": "^10.2.2",
+        "rc": "^1.2.8",
+        "select2": "^4.0.13",
+        "semver": "^7.6.2",
+        "sortablejs": "^1.15.2",
+        "update-notifier": "^7.0.0",
+        "y18n": "^5.0.8",
+        "yargs-parser": "^21.1.1"
+    },
+    "resolutions": {
+        "deep-extend": "0.5.1",
+        "dot-prop": "4.2.1",
+        "got": "11.8.5",
+        "hosted-git-info": "2.8.9",
+        "ini": "1.3.6",
+        "mem": "4.0.0",
+        "minimist": "1.2.5",
+        "semver": "5.7.2",
+        "y18n": "3.2.2",
+        "yargs-parser": "13.1.1"
     }
 }

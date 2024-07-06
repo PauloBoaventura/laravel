@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Facade;
 
 return [
 
@@ -16,7 +16,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Heimdall'),
+    'version' => '2.6.1',
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
+    | services your application utilizes. Set this in your ".env" file.
     |
     */
 
@@ -57,7 +58,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL'),
+    'asset_url' => env('ASSET_URL', null),
+    'appsource' => env('APP_SOURCE', 'https://appslist.heimdall.site/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,7 +124,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:I206O8ibx+GQyRE7BeOxDobn04Mfmyyc5Ptzns/C0mY='),
 
     'cipher' => 'AES-256-CBC',
 
@@ -156,17 +158,16 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-            /*
-             * Package Service Providers...
-             */
-
-            /*
-             * Application Service Providers...
-             */
+        /*
+         * Package Service Providers...
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        /*
+         * Application Service Providers...
+         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-            // App\Providers\BroadcastServiceProvider::class,
-        Illuminate\Mail\MailServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
@@ -183,8 +184,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
-        'Vite' => \Illuminate\Support\Facades\Vite::class,
+        'EnhancedApps' => App\EnhancedApps::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Redis' => Illuminate\Support\Facades\Redis::class,
+        'SupportedApps' => App\SupportedApps::class,
+        'Yaml' => Symfony\Component\Yaml\Yaml::class,
     ])->toArray(),
 
 ];
