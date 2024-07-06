@@ -10,7 +10,7 @@
         "laravel-vite-plugin": "^0.8.0",
         "less": "^4.2.0",
         "sass": "^1.68.0",
-        "stylus": "^0.60.0",
+        "stylus": "^0.63.0",
         "vite": "^4.0.0",
         "vite-plugin-style-import": "^2.0.0"
     },
