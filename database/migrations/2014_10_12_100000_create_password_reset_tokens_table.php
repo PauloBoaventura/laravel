@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
+            $table->string('email', 191)->primary(); // Ajuste 191 para o tamanho adequado
+            $table->string('token', 155)->unique();
             $table->timestamp('created_at')->nullable();
         });
     }

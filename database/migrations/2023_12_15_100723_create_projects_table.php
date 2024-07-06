@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200)->unique();
+            $table->string('name', 200)->notNullable();
             $table->string('corp', 200)->nullable();
-            $table->json('description');
-            $table->string('type', 200);
+            $table->string('description', 255)->nullable(); // Descrição curta
+            $table->text('json_data')->nullable(); // Dados JSON
+            $table->string('type', 200)->notNullable();
             $table->timestamps();
         });
     }
